@@ -1,0 +1,65 @@
+package com.navercorp.pinpoint.web.vo.user;
+
+import java.io.Serializable;
+import java.util.Date;
+
+public class AdminUser implements Serializable {
+	private static final long serialVersionUID = -3096736268081409238L;
+
+	private String mobile;
+	private String password;
+	private String insertTime;
+	private String updateTime;
+	private Boolean isDel;
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getInsertTime() {
+		return insertTime;
+	}
+
+	public void setInsertTime(String insertTime) {
+		this.insertTime = insertTime;
+	}
+
+	public String getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(String updateTime) {
+		this.updateTime = updateTime;
+	}
+
+	public Boolean getDel() {
+		return isDel;
+	}
+
+	public void setDel(Boolean del) {
+		isDel = del;
+	}
+
+	@Override
+	public String toString() {
+		return "AdminUser{" +
+				"mobile='" + mobile + '\'' +
+				", password='" + password + '\'' +
+				", insertTime='" + insertTime + '\'' +
+				", updateTime='" + updateTime + '\'' +
+				", isDel=" + isDel +
+				'}';
+	}
+}

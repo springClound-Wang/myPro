@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.navercorp.pinpoint.web.dao.mapper.AdminUserDao">
+    <select id="selectIPhoneExist" resultType="com.navercorp.pinpoint.web.vo.user.AdminUser">
+        SELECT mobile,password FROM  admin_user WHERE mobile=#{phone} AND is_del=0
+    </select>
+
+</mapper>
