@@ -51,6 +51,15 @@
             <list>
                 <!-- use the patch version because of mybatis 3.2's incompatibility-->
                 <bean class="com.navercorp.pinpoint.web.dao.ibatis.BindingLogPlugin32"/>
+                <bean class="com.github.pagehelper.PageHelper">
+                    <property name="properties">
+                        <value>
+                            dialect=mysql
+                            reasonable=true
+                        </value>
+                    </property>
+                </bean>
+
             </list>
         </property>
     </bean>

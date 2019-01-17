@@ -11,10 +11,10 @@
 		menu: [{
 			"view": "General",
 			"value": "general"
-		}, {
+		}, /*{
 			"view": "User Group",
 			"value": "userGroup"
-		}, {
+		}, */{
 			"view": "Application",
 			"value": "application"
 		}, {

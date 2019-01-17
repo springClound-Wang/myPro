@@ -20,6 +20,7 @@ import java.util.Map;
  * @desc
  * @Version 1.0V
  **/
+
 @RestController
 @RequestMapping("/adminUser")
 public class AdminUserController {
@@ -38,7 +39,7 @@ public class AdminUserController {
            result.put("data",pageInfo);
            return result;
     }
-    @PostMapping("/regUser")
+    @RequestMapping("/regUser")
     @ResponseBody
     public String regUser(@RequestParam("userIphone") String userIphone,@RequestParam("userPassword") String userPassword,@RequestParam("password2") String password2){
         if(!ValidateUtil.isMobile(userIphone)){
@@ -57,7 +58,7 @@ public class AdminUserController {
         }
         return adminUserService.addAmdinUser(userIphone,userPassword);
     }
-    @PostMapping("/deleteUser")
+    @RequestMapping("/deleteUser")
     @ResponseBody
     public String deleteUser(@RequestParam("userIphone") String userIphone,@RequestParam("userPassword") String userPassword,@RequestParam("password2") String password2){
         if(!ValidateUtil.isMobile(userIphone)){
