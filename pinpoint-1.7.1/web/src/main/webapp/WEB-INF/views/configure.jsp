@@ -1,10 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>用户组配置</title>
+    <title>精确配置</title>
+    <link rel="shortcut icon" href="/favicon.png" type="image/png">
+    <link rel="icon" href="/favicon.png" type="image/png">
     <link rel="stylesheet" href="../../components/bootstrap/dist/css/bootstrap.min.css">
-    <script src="../../components/jquery/dist/jquery.min.js"></script>
-    <script src="../../components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../../lib/css/pagination.css">
+    <script type="text/javascript" src="../../components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../../components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript"  src="../../lib/js/pagination.js"></script>
+    <script src="../../components/jquery/dist/md5.min.js"></script>
+    <script type="text/javascript"  src="../../lib/js/adminUser.js"></script>
+
     <style type="text/css">
         .table span i{
             cursor: pointer;
@@ -19,7 +26,7 @@
             margin: 0px;
             padding: 0px;
         }
-        #home{
+        #home,#profile{
             margin-top: 20px;
         }
         #home .panel-default-a{
@@ -41,11 +48,10 @@
         <div class="panel-body">
 
             <div>
-
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" role="tablist">
                     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">用户组设置</a></li>
-
+                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">系统设置</a></li>
                 </ul>
 
                 <!-- Tab panes -->
@@ -96,6 +102,56 @@
                             </div>
                         </div>
 
+                    </div>
+                    <div role="tabpanel" class="tab-pane " id="profile">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <div class="admin-table">
+                                <button type="button" onclick="$('.admin-table').hide();$('.admin-form').show()" class="btn btn-primary"><i class="glyphicon glyphicon-plus"></i>添加</button>
+                                <table class="table table-hover table-bordered ">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>用户名称</th>
+                                        <th>上一次登录时间</th>
+                                        <th>修改时间</th>
+                                        <th>QQ绑定</th>
+                                        <th>码云绑定</th>
+                                        <th>GITHUB绑定</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody class="admin-body">
+
+                                    </tbody>
+                                </table>
+                                <div class="ht-page"></div>
+                                </div>
+                                <div class="admin-form" style="display: none">
+                                    <form class="form-horizontal" onsubmit="return false">
+                                        <div class="form-group col-sm-7">
+                                            <label for="exampleInputEmail1">手机号</label>
+                                            <input type="text" maxlength="11" class="form-control" id="exampleInputEmail1" placeholder="Mobile">
+                                        </div>
+                                        <div class="form-group col-sm-7 ">
+                                            <label for="exampleInputPassword1">密码</label>
+                                            <input type="password" class="form-control" maxlength="20" id="exampleInputPassword1" placeholder="Password">
+                                        </div>
+                                        <div class="form-group col-sm-7 ">
+                                            <label for="exampleInputPassword2">确认密码</label>
+                                            <input type="password" class="form-control" maxlength="20" id="exampleInputPassword2" placeholder="Password">
+                                        </div>
+                                        <div class="form-group col-sm-7">
+
+                                                <button type="button" onclick="subAdminUser()" class="btn btn-info">提交</button>
+                                                <button type="button" onclick="$('.admin-table').show();$('.admin-form').hide()"  class="btn btn-default">返回列表</button>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
 
                 </div>

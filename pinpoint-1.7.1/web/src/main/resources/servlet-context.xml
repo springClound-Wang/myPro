@@ -42,6 +42,13 @@
         <bean id="webContentInterceptor" class="org.springframework.web.servlet.mvc.WebContentInterceptor">
             <property name="cacheSeconds" value="0"/>
         </bean>
+       <!-- <mvc:interceptor>
+            <mvc:mapping path="/*" />
+            <mvc:exclude-mapping path="/login.pinpoint"></mvc:exclude-mapping>
+            <mvc:exclude-mapping path="/login/*"></mvc:exclude-mapping>
+
+            <bean class="com.navercorp.pinpoint.web.interceptor.LoginInterceptor" />
+        </mvc:interceptor>-->
         <mvc:interceptor>
             <mvc:mapping path="/admin/**" />
             <bean class="com.navercorp.pinpoint.web.interceptor.AdminAuthInterceptor" />

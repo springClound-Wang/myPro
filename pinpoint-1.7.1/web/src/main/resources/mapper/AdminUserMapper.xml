@@ -6,5 +6,29 @@
     <select id="selectIPhoneExist" resultType="com.navercorp.pinpoint.web.vo.user.AdminUser">
         SELECT mobile,password FROM  admin_user WHERE mobile=#{phone} AND is_del=0
     </select>
+    <select id="selectAdminUserList" resultType="com.navercorp.pinpoint.web.vo.user.AdminUser">
+        SELECT mobile,last_time,update_time,qq_openid,github_openid,gitee_openid FROM  admin_user WHERE is_del=0
+    </select>
+    <update id="udpateInfoByPhone">
+        UPDATE admin_user <set>
+        last_time=NOW(),
+        <if test="qqOpenid!=null and qqOpenid!=''">
+            qq_openid=#{qqOpenid}
+        </if>
+        <if test="githubOpenid!=null and githubOpenid!=''">
+            github_openid=#{githubOpenid}
+        </if>
+        <if test="giteeOpenid!=null and giteeOpenid!=''">
+            gitee_openid=#{giteeOpenid}
+        </if>
+    </set>
+        WHERE mobile=#{phone} AND is_del=0
+    </update>
+    <insert id="addAmdinUser">
+        INSERT INTO admin_user(mobile,password,insert_time,update_time,is_del,last_time) VALUES(#{mobile},#{password},NOW(),NOW(),0,NOW())
+    </insert>
 
+    <update id="deleteAdminUserByPhone">
+        UPDATE admin_user SET is_del=1 WHERE mobile=#{phone} AND is_del=0
+    </update>
 </mapper>

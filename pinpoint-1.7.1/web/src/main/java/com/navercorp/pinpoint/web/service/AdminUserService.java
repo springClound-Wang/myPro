@@ -15,17 +15,19 @@
  */
 package com.navercorp.pinpoint.web.service;
 
-import com.navercorp.pinpoint.web.vo.User;
+import com.github.pagehelper.PageInfo;
+import com.navercorp.pinpoint.web.vo.user.AdminUser;
 
 import javax.servlet.http.HttpSession;
-import java.util.List;
 
 /**
  * @author wzz
  */
 public interface AdminUserService {
-
+    AdminUser selectIPhoneExist(String phone);
     String selectIPhoneExist(String phone, String pwd, HttpSession session);
-
+    PageInfo<AdminUser> selectAdminUserInfo(Integer page);
+    String addAmdinUser(String mobile,String password);
+    String deleteAmdinUser(String mobile);
 
 }

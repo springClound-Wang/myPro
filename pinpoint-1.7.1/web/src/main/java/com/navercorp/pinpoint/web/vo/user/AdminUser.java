@@ -1,7 +1,6 @@
 package com.navercorp.pinpoint.web.vo.user;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class AdminUser implements Serializable {
 	private static final long serialVersionUID = -3096736268081409238L;
@@ -11,7 +10,10 @@ public class AdminUser implements Serializable {
 	private String insertTime;
 	private String updateTime;
 	private Boolean isDel;
-
+	private String lastTime;
+	private String qqOpenid;
+	private String giteeOpenid;
+	private String githubOpenid;
 	public String getMobile() {
 		return mobile;
 	}
@@ -52,6 +54,38 @@ public class AdminUser implements Serializable {
 		isDel = del;
 	}
 
+	public String getLastTime() {
+		return lastTime;
+	}
+
+	public void setLastTime(String lastTime) {
+		this.lastTime = lastTime;
+	}
+
+	public String getQqOpenid() {
+		return qqOpenid;
+	}
+
+	public void setQqOpenid(String qqOpenid) {
+		this.qqOpenid = qqOpenid;
+	}
+
+	public String getGiteeOpenid() {
+		return giteeOpenid;
+	}
+
+	public void setGiteeOpenid(String giteeOpenid) {
+		this.giteeOpenid = giteeOpenid;
+	}
+
+	public String getGithubOpenid() {
+		return githubOpenid;
+	}
+
+	public void setGithubOpenid(String githubOpenid) {
+		this.githubOpenid = githubOpenid;
+	}
+
 	@Override
 	public String toString() {
 		return "AdminUser{" +
@@ -60,6 +94,10 @@ public class AdminUser implements Serializable {
 				", insertTime='" + insertTime + '\'' +
 				", updateTime='" + updateTime + '\'' +
 				", isDel=" + isDel +
+				", lastTime='" + lastTime + '\'' +
+				", qqOpenid='" + qqOpenid + '\'' +
+				", giteeOpenid='" + giteeOpenid + '\'' +
+				", githubOpenid='" + githubOpenid + '\'' +
 				'}';
 	}
 }

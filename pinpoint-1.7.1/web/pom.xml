@@ -37,6 +37,12 @@
             <artifactId>common-tools</artifactId>
             <version>1.1.1</version>
         </dependency>
+        <dependency>
+            <!-- pageHelper分页插件 -->
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <version>1.2.5</version>
+        </dependency>
 
         <dependency>
             <groupId>com.navercorp.pinpoint</groupId>

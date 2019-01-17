@@ -47,6 +47,6 @@ public class LoginController {
     public String loginOut(HttpSession session){
         session.removeAttribute(AdminUserServiceImpl.LOGIN_USER);
         session.invalidate();
-        return "redirect:login.pinpoint";
+        return "redirect:/login.pinpoint";
     }
 }

@@ -15,14 +15,19 @@
  */
 package com.navercorp.pinpoint.web.service;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.navercorp.pinpoint.common.util.StringUtils;
 import com.navercorp.pinpoint.web.dao.mapper.AdminUserDao;
 import com.navercorp.pinpoint.web.util.MD5Util;
 import com.navercorp.pinpoint.web.vo.user.AdminUser;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.slf4j.LoggerFactory;
+
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * @author wzz
@@ -34,6 +39,19 @@ public class AdminUserServiceImpl implements AdminUserService {
     public static final String LOGIN_USER="login_user";
     @Autowired
     AdminUserDao adminUserDao;
+
+    @Override
+    public String deleteAmdinUser(String mobile) {
+       int count= adminUserDao.deleteAdminUserByPhone(mobile);
+        if(count>0)  return "success"; return "删除失败";
+    }
+
+    @Override
+    public String addAmdinUser(String mobile, String password) {
+        int count=adminUserDao.addAmdinUser(mobile,password);
+        if(count>0)  return "success"; return "添加失败";
+
+    }
 
     @Override
     public String selectIPhoneExist(String phone, String pwd, HttpSession session) {
@@ -49,7 +67,36 @@ public class AdminUserServiceImpl implements AdminUserService {
         return "用户名或密码错误";
     }
 
+    @Override
+    public AdminUser selectIPhoneExist(String phone) {
+        return adminUserDao.selectIPhoneExist(phone);
+    }
 
+    @Override
+    public PageInfo<AdminUser> selectAdminUserInfo(Integer page) {
+        PageHelper.startPage(page, 5);
+        List<AdminUser> usersList= adminUserDao.selectAdminUserList();
+        for (AdminUser user:usersList) {
+           if(!StringUtils.isEmpty(user.getGiteeOpenid())){
+               user.setGiteeOpenid("是");
+           }else{
+               user.setGiteeOpenid("否");
+           }
+            if(!StringUtils.isEmpty(user.getGithubOpenid())){
+                user.setGithubOpenid("是");
+            }else{
+                user.setGithubOpenid("否");
+            }
+            if(!StringUtils.isEmpty(user.getQqOpenid())){
+                user.setQqOpenid("是");
+            }else{
+                user.setQqOpenid("否");
+            }
+
+        }
+        PageInfo<AdminUser> pageInfo = new PageInfo<AdminUser>(usersList);
+        return pageInfo;
+    }
 
 
 }

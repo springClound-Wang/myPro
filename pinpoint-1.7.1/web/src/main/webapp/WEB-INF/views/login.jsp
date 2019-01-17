@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>登陆</title>
-
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
+    <link rel="icon" href="favicon.png" type="image/png">
     <link rel="stylesheet" href="../../components/bootstrap/dist/css/bootstrap.min.css">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="../../components/jquery/dist/jquery.min.js"></script>
@@ -86,9 +87,9 @@
             var promise = $.post("/login/doLogin.pinpoint",obj);
             promise.then(function (json) {
                 if(json=="success"){
-                    location.href="//"+location.host;//location.host
+                    location.href="/#/main";
                 }else{
-                    alert(json);
+                    alert(json.errorMessage?json.errorMessage:json);
                 }
 
 
